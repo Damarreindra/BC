@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const TabBar = ({ state, descriptors, navigation }) => {
-    // Define icon mapping
     const icons = {
-        index: (props) => <AntDesign name='home' size={26} color={'#222'} {...props} />,
+        // index: (props) => <AntDesign name='home' size={26} color={'#222'} {...props} />,
         home: (props) => <AntDesign name='home' size={26} color={'#222'} {...props} />,
-        login: (props) => <AntDesign name='login' size={26} color={'#222'} {...props} />,
+        // login: (props) => <AntDesign name='login' size={26} color={'#222'} {...props} />,
+        leaderboard: (props) => <MaterialCommunityIcons name='podium' size={26} color={'#222'} {...props} />,
     };
 
     return (
@@ -21,7 +21,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                         ? options.title
                         : route.name;
 
-                if (['_sitemap', '+not-found'].includes(route.name)) return null;
+                if (['_sitemap', '+not-found', 'index', 'login'].includes(route.name)) return null;
                 
                 const isFocused = state.index === index;
                 
