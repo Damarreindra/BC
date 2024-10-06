@@ -1,7 +1,6 @@
-import { Pressable, StyleSheet, Text, View, Image } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import Billiard from "../assets/billiard.png";
 import { useFonts } from "expo-font";
-
 export default function CardMenu({image, title}) {
   const [fontsLoaded] = useFonts({
     'Montserrat-Black': require('../assets/fonts/Montserrat-Black.ttf'),
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#fff",
     borderRadius: 16,
-    height: 80,
+   
     marginHorizontal: 20,
     alignItems: "center",
     justifyContent:'flex-start',
