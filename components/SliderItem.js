@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     alignItems:'center',
     borderWidth: 2,
-
+    
 },text:{
   fontSize:16
 },

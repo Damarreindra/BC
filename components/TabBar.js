@@ -21,7 +21,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                         ? options.title
                         : route.name;
 
-                if (['_sitemap', '+not-found', 'index', 'login'].includes(route.name)) return null;
+                if (['_sitemap', '+not-found', 'index', 'login', 'selectPlayer'].includes(route.name)) return null;
                 
                 const isFocused = state.index === index;
                 
@@ -84,7 +84,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
 const styles = StyleSheet.create({
     tabBar: {
         position: 'absolute',
-        bottom: 25,
+        bottom: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -93,11 +93,12 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 25,
         borderCurve: 'continuous',
-        borderColor: 'black',
+        borderColor: 'orange',
         shadowOffset: { width: 0, height: 10 },
         shadowRadius: 10,
         shadowOpacity: 0.1,
         elevation: 10,
+        borderWidth:1
     },
     tabBarItem: {
         flex: 1,
