@@ -7,6 +7,7 @@ import {
   Pressable,
   FlatList,
   Image,
+  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useGlobalSearchParams, useRouter } from "expo-router";
@@ -90,6 +91,8 @@ const Match = () => {
     }
   };
 
+  
+
   useEffect(() => {
     getMatch();
   }, []);
@@ -111,6 +114,8 @@ const Match = () => {
   }
 
   const winner = data.players.sort((a,b) => b.score - a.score)
+
+
 
 
 
@@ -142,15 +147,61 @@ const Match = () => {
         console.log(error.message);
       }
   }
+  const deleteMatch = async () =>{
+    try {
+      const response = await fetch(
+        "http://192.168.100.5:3000/api/game/",
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            matchId: `${glob.id}`,
+           winnerId:data.winner
+          }),
+        }
+      );
+      if (response.ok) {
+        router.back()
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to update score:", errorData.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-
-
+  const handlePress = () => {
+    Alert.alert(
+      "Confirm Navigation",
+      "Are you sure you want to delete this match?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            deleteMatch();
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backButton}>
           <FontAwesome name="arrow-left" size={18} color="#fe6b1d" />
+        </Pressable>
+        <Pressable onPress={() => handlePress()} style={styles.trashButton}>
+          <FontAwesome name="trash" size={24} color="#fe6b1d" />
         </Pressable>
         <Text style={styles.headerTitle}>Match Time</Text>
       </View>
@@ -188,12 +239,14 @@ const Match = () => {
           )}
         />
       </View>
+
       <View style={styles.footer}>
-        <Pressable style={styles.startButton} 
-        onPress={()=>getWinner()}
-        >
-          <Text style={styles.startButtonText}>Finish Game</Text>
-        </Pressable>
+      <Pressable style={data.winner ? styles.disabledButton : styles.startButton} 
+          onPress={()=>getWinner()} 
+          >
+            <Text style={styles.startButtonText}>Finish Game</Text>
+          </Pressable>
+       
       </View>
     </SafeAreaView>
   );
@@ -227,6 +280,10 @@ const styles = StyleSheet.create({
   },
   backButton: {
     padding: 8,
+  },
+  trashButton:{
+    position:'absolute',
+    right: 30
   },
   headerTitle: {
     fontSize: 20,
@@ -295,6 +352,13 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     alignItems: "center",
   },
+  disabledButton:{
+    backgroundColor: "#ccc", 
+    padding: 10,
+    borderRadius: 5,
+    opacity: 0.5, 
+  },
+
   startButtonText: {
     fontSize: 16,
     fontFamily: "Montserrat-SemiBold",

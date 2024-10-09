@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     alignItems: "center",
+    height:height
   },
   menuScroll: {
     justifyContent: "center",
