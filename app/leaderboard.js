@@ -8,9 +8,9 @@ const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const getWinner = async () => {
     try {
-        const response = await fetch('http://192.168.100.5:3000/api/players/getChamps');
+        const response = await fetch('http://8.215.1.120:3000/api/players/getChamps');
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -21,7 +21,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    getMovies();
+    getWinner();
   }, []);
 
 

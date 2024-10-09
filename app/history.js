@@ -17,12 +17,12 @@ const {height} = Dimensions.get('screen')
 
 const History = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true); // New state for loading
+  const [loading, setLoading] = useState(true); 
   const router = useRouter();
 
   const getMatches = async () => {
     try {
-      const response = await fetch("http://192.168.100.5:3000/api/game");
+      const response = await fetch("http://8.215.1.120:3000/api/game");
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -49,7 +49,7 @@ const History = () => {
         <Text style={styles.headerTitle}>History</Text>
       </View>
 
-      <View style={{height:height }}>
+      <View style={{height:height, paddingBottom:150 }}>
         {loading ? ( // Show the loading spinner when data is still being fetched
           <ActivityIndicator size="large" color="#fe6b1d" style={styles.loadingIndicator} />
         ) : (
@@ -73,13 +73,13 @@ export default History;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height:height
+    height:height,
+    
   },
   cardContainer: {
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
-    
   },
   header: {
     flexDirection: "row",

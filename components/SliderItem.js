@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 10, height: 10 }, // Create a deep shadow
+    shadowColor: '#a5a5a5',
     shadowOpacity: 0.8,
     shadowRadius: 8,
     borderColor: 'black', // Border to give definition

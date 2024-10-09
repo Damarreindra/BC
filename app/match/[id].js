@@ -22,7 +22,7 @@ const Match = () => {
   const getMatch = async () => {
     try {
       const response = await fetch(
-        `http://192.168.100.5:3000/api/game/${glob.id}`
+        `http://8.215.1.120:3000/api/game/${glob.id}`
       );
       const json = await response.json();
       setData(json);
@@ -38,7 +38,7 @@ const Match = () => {
   const addScore = async (id) => {
     try {
       const response = await fetch(
-        "http://192.168.100.5:3000/api/game/updateScore",
+        "http://8.215.1.120:3000/api/game/updateScore",
         {
           method: "PATCH",
           headers: {
@@ -66,7 +66,7 @@ const Match = () => {
   const decrementScore = async (id) => {
     try {
       const response = await fetch(
-        "http://192.168.100.5:3000/api/game/updateScore",
+        "http://8.215.1.120:3000/api/game/updateScore",
         {
           method: "PATCH",
           headers: {
@@ -122,7 +122,7 @@ const Match = () => {
   const getWinner = async () =>{
     try {
         const response = await fetch(
-          "http://192.168.100.5:3000/api/game/getWinner",
+          "http://8.215.1.120:3000/api/game/getWinner",
           {
             method: "PATCH",
             headers: {
@@ -150,7 +150,7 @@ const Match = () => {
   const deleteMatch = async () =>{
     try {
       const response = await fetch(
-        "http://192.168.100.5:3000/api/game/",
+        "http://8.215.1.120:3000/api/game/",
         {
           method: "DELETE",
           headers: {

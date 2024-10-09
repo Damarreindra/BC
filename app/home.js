@@ -21,11 +21,11 @@ const { height } = Dimensions.get("screen");
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const router = useRouter()
+  const router = useRouter();
 
   const getPlayer = async () => {
     try {
-      const response = await fetch("http://192.168.100.5:3000/api/players");
+      const response = await fetch("http://8.215.1.120:3000/api/players");
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -70,8 +70,6 @@ export default function Home() {
           )}
           horizontal
         />
- <View>
-    </View>
         <FlatList
           data={menuItems}
           contentContainerStyle={styles.listContainer}
@@ -80,7 +78,6 @@ export default function Home() {
           )}
           showsVerticalScrollIndicator={false}
         />
-        
       </ImageBackground>
     </View>
   );
@@ -94,8 +91,7 @@ const styles = StyleSheet.create({
   listContainer: {
     paddingVertical: 20,
     gap: 20,
-    paddingBottom: 100, 
-
+    paddingBottom: 100,
   },
   logo: {
     resizeMode: "contain",
@@ -107,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     alignItems: "center",
-    height:height
+    height: height,
   },
   menuScroll: {
     justifyContent: "center",

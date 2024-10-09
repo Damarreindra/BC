@@ -29,7 +29,7 @@ export default function SelectPlayer() {
 
 const getPlayer = async () => {
   try {
-    const response = await fetch("http://192.168.100.5:3000/api/players");
+    const response = await fetch("http://8.215.1.120:3000/api/players");
     const json = await response.json();
     setData(json);
   } catch (error) {
@@ -54,7 +54,7 @@ const removePlayer = (id) => {
 const startMatch = async () => {
   try {
     if (players.length === 0) return;
-    const response = await fetch('http://192.168.100.5:3000/api/game', {
+    const response = await fetch('http://8.215.1.120:3000/api/game', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
